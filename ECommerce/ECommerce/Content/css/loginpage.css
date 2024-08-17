@@ -1,0 +1,96 @@
+﻿.signup-page {
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    font-family: 'Roboto', sans-serif;
+    padding: 0 20px;
+}
+
+.signup-block {
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 700px;
+    max-width: 500px;
+}
+
+    .signup-block h2 {
+        color: #333;
+        font-size: 26px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .signup-block .form-group {
+        margin-bottom: 15px; /* Reduced the space between input fields */
+    }
+
+    .signup-block .input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #f2f4f8;
+        padding: 10px 15px;
+    }
+
+        .signup-block .input-container i {
+            color: #29aafe;
+            font-size: 18px;
+            margin-right: 15px;
+            flex-shrink: 0; /* Ensure the icon doesn't shrink */
+        }
+
+    .signup-block .form-control {
+        border: none;
+        background: transparent;
+        font-size: 16px;
+        width: 100%;
+        outline: none;
+        padding: 5px 0; 
+    }
+
+    .signup-block .btn-block {
+        margin-top: 20px;
+        padding: 12px;
+        background: #29aafe;
+        border: none;
+        font-size: 16px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        width:100%;
+        transition: background 0.3s ease;
+    }
+
+        .signup-block .btn-block:hover {
+            background: #1c87c9;
+        }
+
+.signup-links {
+    padding-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+    .signup-links a {
+        color: #29aafe;
+        text-decoration: none;
+    }
+
+        .signup-links a:hover {
+            color: #1c87c9;
+        }
+
+@media (max-width: 425px) {
+    .signup-block {
+        padding: 20px;
+        max-width: 300px; /* Further reduced width for smaller screens */
+    }
+
+        .signup-block h2 {
+            font-size: 22px;
+        }
+}

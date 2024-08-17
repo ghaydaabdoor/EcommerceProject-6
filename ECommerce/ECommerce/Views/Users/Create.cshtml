@@ -1,0 +1,94 @@
+﻿@model ECommerce.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<link href="~/Content/css/loginpage.css" rel="stylesheet">
+
+
+@using (Html.BeginForm("Create", "Users", FormMethod.Post, new { onsubmit = "return validatePasswords()" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="signup-page">
+        <main>
+            <div class="signup-block">
+                <h2>Create Your Account</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Username" })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fa fa-envelope"></i>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email Address", type = "email" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fa fa-lock"></i>
+                        @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control", placeholder = "Password", id = "UserPassword" })
+                        @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="RepeatPassword" class="form-control" placeholder="Repeat Password" />
+                    </div>
+                </div>
+
+                <div class="form-group text-danger" id="passwordError" style="display:none;">
+                    Passwords do not match!
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+            </div>
+
+            <div class="signup-links">
+                <p class="text-center">Already have an account? <a href="/Users/Login" class="btn btn-link">Login</a></p>
+            </div>
+        </main>
+    </div>
+}
+
+<script>
+    function validatePasswords() {
+        var password = document.getElementById("UserPassword").value;
+        var repeatPassword = document.getElementById("RepeatPassword").value;
+        if (password !== repeatPassword) {
+            document.getElementById("passwordError").style.display = "block";
+            return false;
+        }
+        document.getElementById("passwordError").style.display = "none";
+        return true;
+    }
+</script>

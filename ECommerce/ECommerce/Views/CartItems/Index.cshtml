@@ -1,0 +1,131 @@
+﻿@model IEnumerable<ECommerce.Models.CartItem>
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var totalCartPrice = 0.0m; // Initialize total price variable for summary
+}
+
+<!-- cart + summary -->
+<section class="bg-light my-5">
+    <div class="container">
+        <div class="row">
+            <!-- cart -->
+            <div class="col-lg-9">
+                <div class="card border shadow-0">
+                    <div class="m-4">
+                        <h4 class="card-title mb-4">Your shopping cart</h4>
+                        @foreach (var item in Model)
+                        {
+                            var itemTotalPrice = item.Quantity * item.Product.Price; // Calculate total price for each item
+                            totalCartPrice += (decimal)itemTotalPrice; // Add to total cart price
+                            <div class="row gy-3 mb-4">
+                                <div class="col-lg-5">
+                                    <div class="me-lg-5">
+                                        <div class="d-flex">
+                                            <img src="@item.Product.ImageUrl" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                            <div class="">
+                                                <a href="#" class="nav-link">@item.Product.ProductName</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                                    <div class="">
+                                        <select style="width: 100px;" class="form-select me-4 quantity-selector" data-price="@item.Product.Price" data-id="@item.CartItemId">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <option value="@i" @(item.Quantity == i ? "selected" : null)>@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="">
+                                        <text class="h6 item-total" data-item-id="@item.CartItemId">@itemTotalPrice JOD</text> <br />
+                                        <small class="text-muted text-nowrap">@item.Product.Price JOD / per item</small>
+                                    </div>
+                                </div>
+                                <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                                    <div class="float-md-end">
+                                        <form action="@Url.Action("RemoveItem", "CartItems")" method="post">
+                                            <input type="hidden" name="CartItemId" value="@item.CartItemId" />
+                                            <button type="submit" class="btn btn-light border text-danger icon-hover-danger" onclick="removeItem(@item.CartItemId)">Remove</button>
+                                            <!-- Modify this in your view -->
+                            
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- summary -->
+            <div class="col-lg-3">
+                <div class="card shadow-0 border">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">Total price:</p>
+                            <p class="mb-2" id="cart-total">@totalCartPrice JOD</p>
+                        </div>
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">Total price:</p>
+                            <p class="mb-2 fw-bold" id="cart-final-total">@totalCartPrice JOD</p>
+                        </div>
+
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-primary w-100 shadow-0 mb-2"> Make Purchase </a>
+                            <a href="#" class="btn btn-light w-100 border mt-2"> Back to shop </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- summary -->
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.quantity-selector').forEach(function (select) {
+        select.addEventListener('change', function () {
+            var price = parseFloat(this.getAttribute('data-price'));
+            var quantity = parseInt(this.value);
+            var itemId = this.getAttribute('data-id');
+            var itemTotal = price * quantity;
+
+            // Update the individual item's total
+            document.querySelector('.item-total[data-item-id="' + itemId + '"]').innerText = itemTotal.toFixed(2) + " JOD";
+
+            // Update the total cart price
+            var totalCartPrice = 0;
+            document.querySelectorAll('.quantity-selector').forEach(function (sel) {
+                var itemPrice = parseFloat(sel.getAttribute('data-price'));
+                var itemQuantity = parseInt(sel.value);
+                totalCartPrice += itemPrice * itemQuantity;
+            });
+
+            document.getElementById('cart-total').innerText = totalCartPrice.toFixed(2) + " JOD";
+            document.getElementById('cart-final-total').innerText = totalCartPrice.toFixed(2) + " JOD";
+        });
+    });
+
+    function removeItem(cartItemId) {
+        if (confirm('Are you sure you want to remove this item from your cart?')) {
+            $.ajax({
+                url: '@Url.Action("RemoveItem", "CartItems")',
+                type: 'POST',
+                data: { cartItemId: cartItemId },
+                success: function() {
+                    // Reload the page or update the cart contents
+                    location.reload(); // Reload the page to reflect changes
+                },
+                error: function() {
+                    alert('An error occurred while removing the item.');
+                }
+            });
+        }
+    }
+
+</script>
