@@ -15,34 +15,6 @@ namespace ECommerce.Controllers
     {
         private ECommerceEntities db = new ECommerceEntities();
 
-        // GET: Users
-        public ActionResult Index()
-        {
-            return View(db.Users.ToList());
-        }
-
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-
-
-
-
-
-
-
         // GET: Users/Create
         public ActionResult Create()
         {
@@ -58,7 +30,7 @@ namespace ECommerce.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
             }
 
             return View(user);
@@ -82,8 +54,8 @@ namespace ECommerce.Controllers
                 Session["currentUserID"] = user.UserId;
                 Session["currentEmail"] = user.Email;
                 Session["currentFirstName"] = user.FirstName;
-                Session["currentLastName"]=user.LastName;
-                Session["currentUserName"]=user.Username;
+                Session["currentLastName"] = user.LastName;
+                Session["currentUserName"] = user.Username;
 
                 if (user == null)
                 {
@@ -97,7 +69,7 @@ namespace ECommerce.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Products"); 
+                    return RedirectToAction("Index", "Products");
                 }
             }
         }
@@ -105,7 +77,7 @@ namespace ECommerce.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Index", "Categories"); 
+            return RedirectToAction("Index", "Categories");
 
         }
 
@@ -173,70 +145,12 @@ namespace ECommerce.Controllers
 
         private bool VerifyPassword(string inputPassword, string storedPasswordHash)
         {
-            return inputPassword == storedPasswordHash; 
+            return inputPassword == storedPasswordHash;
         }
 
         private string HashPassword(string password)
         {
-            return password; 
-        }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// GET: Users/Delete/5
-public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return password;
         }
     }
 }
