@@ -93,6 +93,8 @@
     <Property Name="CreatedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__UserId__571DF1D5" FromRole="Users" ToRole="Cart" />
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserId__5DCAEF64" FromRole="Users" ToRole="Orders" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__Cart__UserId__571DF1D5">
     <End Role="Users" Type="Self.User" Multiplicity="0..1" />

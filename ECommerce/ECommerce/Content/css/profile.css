@@ -1,0 +1,109 @@
+﻿body {
+    margin: 0;
+    padding-top: 40px;
+    color: #2e323c;
+    background: #f5f6fa;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    height: 100%;
+}
+
+.account-settings .user-profile {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+    .account-settings .user-profile .user-avatar {
+        margin-bottom: 1rem;
+    }
+
+        .account-settings .user-profile .user-avatar img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .account-settings .user-profile h5.user-name {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .account-settings .user-profile h6.user-email {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #6c757d;
+    }
+
+.account-settings .about {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+    .account-settings .about h5 {
+        color: #007ae1;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .account-settings .about p {
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: .9rem;
+    background: #ffffff;
+    color: #495057;
+    padding: 10px;
+    margin:10px 0;
+}
+.pr{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007ae1;
+    border-color: #007ae1;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: #005bb5;
+        border-color: #005bb5;
+    }
+
+.text-primary {
+    color: #007ae1 !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .card {
+        margin-bottom: 1.5rem;
+    }
+}

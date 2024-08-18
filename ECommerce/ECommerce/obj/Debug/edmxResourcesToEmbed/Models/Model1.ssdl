@@ -79,6 +79,8 @@
     <Property Name="FirstName" Type="varchar" MaxLength="100" />
     <Property Name="LastName" Type="varchar" MaxLength="100" />
     <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="street" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK__Cart__UserId__571DF1D5">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />

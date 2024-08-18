@@ -45,24 +45,23 @@
                         <!-- col.// -->
                         <div class="col-md-4 col-6 mb-3">
                             <label class="mb-2 d-block">Quantity</label>
-                            <div class="input-group mb-3" style="width: 170px;">
-                                <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <input type="text" class="form-control text-center border border-secondary" value="1" id="quantityInput" aria-label="Quantity" aria-describedby="button-addon1" />
-                                <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                                    <i class="fas fa-plus"></i>
-                                </button>
+                            <div class="">
+                                <select id="quantitySelector" style="width: 100px;" class="form-select me-4 quantity-selector">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Add to cart button -->
                     <form action="/CartItems/AddToCart" method="post">
                         <input type="hidden" name="ProductId" value="@Model.ProductId" />
                         <input type="hidden" name="Quantity" id="quantityField" value="1" />
-                        <button type="submit" class="btn btn-primary shadow-0"> 
-                            <i class="me-1 fa fa-shopping-basket"></i> Add to cart 
+                        <button type="submit" class="btn btn-primary shadow-0">
+                            <i class="me-1 fa fa-shopping-basket"></i> Add to cart
                         </button>
                     </form>
                 </div>
@@ -71,3 +70,11 @@
     </div>
 </section>
 <!-- content -->
+
+<script>
+    // JavaScript to update hidden field with selected quantity
+    document.getElementById('quantitySelector').addEventListener('change', function () {
+        var selectedQuantity = this.value;
+        document.getElementById('quantityField').value = selectedQuantity;
+    });
+</script>

@@ -79,6 +79,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="ECommerceModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />

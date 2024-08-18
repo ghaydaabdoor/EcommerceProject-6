@@ -72,7 +72,7 @@
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.CategoryName)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.CategoryDescr)</p>
-                            <a href="@Url.Action("ViewProducts", "Category", new { id = item.CategoryId })" class="btn btn-primary">View Products</a>
+                            <a href="@Url.Action("Index", "Products", new { id = item.CategoryId })" class="btn btn-primary">View Products</a>
                         </div>
                     </div>
                 </div>

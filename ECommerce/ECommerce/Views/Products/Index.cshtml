@@ -6,9 +6,18 @@
 }
 
 <style>
-    .bluebtn {
-        width: 50%;
-        transform:translateY(-10px);
+
+    .btn-container {
+        display: flex;
+    }
+
+    .btnCommon {
+        flex: 1;
+        margin: 0 4px;
+        /* Ensure buttons are the same height */
+        height: 45px; /* Adjust as needed */
+        width: 180px;
+        transform: translateY(-10px);
     }
 </style>
 <!-- content -->
@@ -19,23 +28,17 @@
             <!-- content -->
             <div class="col-lg-12">
                 <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
-                    <strong class="d-block py-2">32 Items found </strong>
+                    <strong class="d-block py-2">@ViewBag.ProductCount Items found</strong>
                     <div class="ms-auto">
-                        <select class="form-select d-inline-block w-auto border pt-1">
-                            <option value="0">Best match</option>
-                            <option value="1">Recommended</option>
-                            <option value="2">High rated</option>
-                            <option value="3">Randomly</option>
+                        <select id="selectCat" class="form-select d-inline-block w-auto border pt-1" onchange="categoryFun()">
+                            <option value="0" disabled selected>Select Category</option>
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                <option value="@category.CategoryId">@category.CategoryName</option>
+                            }
                         </select>
-                        <div class="btn-group shadow-0 border">
-                            <a href="#" class="btn btn-light" title="List view">
-                                <i class="fa fa-bars fa-lg"></i>
-                            </a>
-                            <a href="#" class="btn btn-light active" title="Grid view">
-                                <i class="fa fa-th fa-lg"></i>
-                            </a>
-                        </div>
                     </div>
+
                 </header>
 
                 <div class="row">
@@ -57,8 +60,14 @@
 
                                     <!-- Card Footer with Buttons -->
                                     <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                        <a href="#!" class="btn bluebtn btn-primary shadow-0 me-1">Add to cart</a>
-                                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn bluebtn btn-primary shadow-0 me-1" })
+                                        <div class="btn-container">
+                                            <form action="/CartItems/AddToCart" method="post" class="d-inline">
+                                                <input type="hidden" name="ProductId" value="@item.ProductId" />
+                                                <input type="hidden" name="Quantity" value="1" />
+                                                <button type="submit" class="btn btnCommon btn-primary add">Add to cart</button>
+                                            </form>
+                                            @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn btnCommon btn-primary det" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,3 +83,13 @@
 </section>
 <!-- content -->
 
+<script>
+    function categoryFun() {
+        var selectedCategoryId = document.getElementById('selectCat').value;
+
+        if (selectedCategoryId) {
+            window.location.href = '/Products/Index/' + selectedCategoryId;
+        }
+    }
+
+</script>

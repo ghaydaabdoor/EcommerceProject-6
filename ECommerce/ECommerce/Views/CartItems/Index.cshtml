@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-    var totalCartPrice = 0.0m; // Initialize total price variable for summary
+    var totalCartPrice = 0.0m; 
 }
 
 <!-- cart + summary -->
@@ -17,8 +17,8 @@
                         <h4 class="card-title mb-4">Your shopping cart</h4>
                         @foreach (var item in Model)
                         {
-                            var itemTotalPrice = item.Quantity * item.Product.Price; // Calculate total price for each item
-                            totalCartPrice += (decimal)itemTotalPrice; // Add to total cart price
+                            var itemTotalPrice = item.Quantity * item.Product.Price; 
+                            totalCartPrice += (decimal)itemTotalPrice; 
                             <div class="row gy-3 mb-4">
                                 <div class="col-lg-5">
                                     <div class="me-lg-5">
@@ -118,8 +118,7 @@
                 type: 'POST',
                 data: { cartItemId: cartItemId },
                 success: function() {
-                    // Reload the page or update the cart contents
-                    location.reload(); // Reload the page to reflect changes
+                    location.reload();
                 },
                 error: function() {
                     alert('An error occurred while removing the item.');

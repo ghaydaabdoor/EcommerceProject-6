@@ -50,8 +50,6 @@ namespace ECommerce.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,Username,UserPassword,Email,FirstName,LastName,CreatedAt")] User user)
@@ -60,7 +58,7 @@ namespace ECommerce.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login","Users");
             }
 
             return View(user);
@@ -80,6 +78,7 @@ namespace ECommerce.Controllers
             using (var db = new ECommerceEntities())
             {
                 var user = db.Users.FirstOrDefault(u => u.Email == email);
+
                 Session["currentUserID"] = user.UserId;
                 Session["currentEmail"] = user.Email;
                 Session["currentFirstName"] = user.FirstName;
@@ -98,61 +97,115 @@ namespace ECommerce.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Products"); // Redirect to the home page or dashboard
+                    return RedirectToAction("Index", "Products"); 
                 }
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Logout()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
+            Session.Clear();
+            return RedirectToAction("Index", "Categories"); 
+
+        }
+
+
+
+        // GET: User/Edit
+        public ActionResult Edit()
+        {
+            int currentUserId = (int)Session["currentUserID"];
+            var user = db.Users.Find(currentUserId);
+
             if (user == null)
             {
                 return HttpNotFound();
             }
+
             return View(user);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: User/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,Username,UserPassword,Email,FirstName,LastName,CreatedAt")] User user)
+        public ActionResult Edit(User model, string currentPassword, string newPassword, string confirmPassword)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(model);
             }
-            return View(user);
+
+            var user = db.Users.Find(model.UserId);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            user.Username = model.Username;
+            user.Email = model.Email;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.city = model.city;
+            user.street = model.street;
+
+            if (!string.IsNullOrEmpty(currentPassword) || !string.IsNullOrEmpty(newPassword) || !string.IsNullOrEmpty(confirmPassword))
+            {
+                if (!VerifyPassword(currentPassword, user.UserPassword))
+                {
+                    ModelState.AddModelError("", "Current password is incorrect.");
+                    return View(model);
+                }
+
+                if (newPassword != confirmPassword)
+                {
+                    ModelState.AddModelError("", "New password and confirm password do not match.");
+                    return View(model);
+                }
+
+                user.UserPassword = HashPassword(newPassword);
+            }
+
+            db.SaveChanges();
+            TempData["SuccessMessage"] = "Profile updated successfully!";
+            return RedirectToAction("Edit");
         }
 
-        // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
+        private bool VerifyPassword(string inputPassword, string storedPasswordHash)
+        {
+            return inputPassword == storedPasswordHash; 
+        }
+
+        private string HashPassword(string password)
+        {
+            return password; 
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// GET: Users/Delete/5
+public ActionResult Delete(int? id)
         {
             if (id == null)
             {

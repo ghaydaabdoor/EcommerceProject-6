@@ -17,7 +17,8 @@ namespace ECommerce.Controllers
         // GET: CartItems
         public ActionResult Index()
         {
-            var cartItems = db.CartItems.Include(c => c.Cart).Include(c => c.Product);
+            var userId = (int) Session["currentUserID"];
+            var cartItems = db.CartItems.Include(c => c.Cart).Include(c => c.Product).Where(item => item.Cart.UserId == userId);
             return View(cartItems.ToList());
         }
 
@@ -25,37 +26,43 @@ namespace ECommerce.Controllers
         [HttpPost]
         public ActionResult AddToCart(int ProductId, int Quantity)
         {
-            
-            var userId = (int)Session["currentUserID"];
-
-            var cart = db.Carts.FirstOrDefault(c => c.UserId == userId);
-            if (cart == null)
+            if (Session["currentUserID"] == null)
             {
-                cart = new Cart { UserId = userId };
-                db.Carts.Add(cart);
-                db.SaveChanges();
-            }
-
-            var cartItem = db.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.ProductId == ProductId);
-            if (cartItem == null)
-            {
-                cartItem = new CartItem
-                {
-                    CartId = cart.CartId,
-                    ProductId = ProductId,
-                    Quantity = Quantity
-                };
-                db.CartItems.Add(cartItem);
+                return RedirectToAction("Login", "Users");
             }
             else
             {
-                cartItem.Quantity += Quantity;
+                var userId = (int)Session["currentUserID"];
+                var cart = db.Carts.FirstOrDefault(c => c.UserId == userId);
+                if (cart == null)
+                {
+                    cart = new Cart { UserId = userId };
+                    db.Carts.Add(cart);
+                    db.SaveChanges();
+                }
+
+                var cartItem = db.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.ProductId == ProductId);
+                if (cartItem == null)
+                {
+                    cartItem = new CartItem
+                    {
+                        CartId = cart.CartId,
+                        ProductId = ProductId,
+                        Quantity = Quantity
+                    };
+                    db.CartItems.Add(cartItem);
+                }
+                else
+                {
+                    cartItem.Quantity += Quantity;
+                }
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "CartItems");
             }
-
-            db.SaveChanges();
-
-            return RedirectToAction("Index", "CartItems"); 
         }
+
 
 
         // In CartItemsController.cs
@@ -65,18 +72,15 @@ namespace ECommerce.Controllers
         {
             using (var db = new ECommerceEntities())
             {
-                // Find the cart item to remove
                 var cartItem = db.CartItems.FirstOrDefault(ci => ci.CartItemId == cartItemId);
 
                 if (cartItem != null)
                 {
-                    // Remove the item from the cart
                     db.CartItems.Remove(cartItem);
                     db.SaveChanges();
                 }
 
-                // Redirect to the cart page after removal
-                return RedirectToAction("Index", "CartItems"); 
+                return RedirectToAction("Index", "CartItems");
             }
         }
 
@@ -117,8 +121,6 @@ namespace ECommerce.Controllers
         }
 
         // POST: CartItems/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CartItemId,CartId,ProductId,Quantity")] CartItem cartItem)
@@ -153,8 +155,6 @@ namespace ECommerce.Controllers
         }
 
         // POST: CartItems/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CartItemId,CartId,ProductId,Quantity")] CartItem cartItem)

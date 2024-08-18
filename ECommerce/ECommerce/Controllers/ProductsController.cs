@@ -15,11 +15,23 @@ namespace ECommerce.Controllers
         private ECommerceEntities db = new ECommerceEntities();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var products = db.Products.Include(p => p.Category);
+
+            if (id.HasValue)
+            {
+                products = products.Where(p => p.CategoryId == id.Value);
+            }
+
+            var categories = db.Categories.ToList();
+
+            ViewBag.Categories = categories;
+            ViewBag.ProductCount = products.Count();
+
             return View(products.ToList());
         }
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
@@ -51,8 +63,6 @@ namespace ECommerce.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,CategoryId,ProductName,ProductDescr,Price,ImageUrl,StockQuantity")] Product product)
@@ -85,8 +95,6 @@ namespace ECommerce.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductId,CategoryId,ProductName,ProductDescr,Price,ImageUrl,StockQuantity")] Product product)
