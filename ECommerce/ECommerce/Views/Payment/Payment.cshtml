@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Visa Payment";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<link href="~/Content/css/loginpage.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    h2{
+        text-align:left;
+    }
+    .payment-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
+        width: 100%;
+    }
+    .signup-block .visa-icon {
+        width: 50px; 
+        height: auto;
+        position:absolute;
+        top:10px;
+        right:15px;
+    }
+    label{
+        display:block;
+        text-align:left;
+    }
+    .signup-block {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+    }
+    .signup-block h2{
+        margin-bottom: 40px;
+    }
+
+    .input-container i {
+        margin-right: 10px;
+    }
+
+    .form-control {
+        height: 35px; 
+        font-size: 0.9em; 
+    }
+
+    .total-amount {
+        margin: 20px 0;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+</style>
+
+<form id="paymentForm" action="/Categories/Index" method="post">
+    <div class="payment-page">
+        <div class="signup-block">
+            <h2>Visa Payment</h2>
+            <img src="https://myconwayvet.com/wp-content/uploads/2024/01/visa-svgrepo-com.svg" alt="Visa" class="visa-icon" />
+
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fa fa-credit-card"></i>
+                    <input class="form-control" type="number" id="cardNumber" name="cardNumber" placeholder="Card Number" />
+                </div>
+                <div class="form-group text-danger" id="cardNumberError"></div> 
+            </div>
+
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fa fa-calendar"></i>
+                    <input class="form-control" type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" />
+                </div>
+                <div class="form-group text-danger" id="expiryDateError"></div> <!-- Placeholder for error messages -->
+            </div>
+
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fa fa-lock"></i>
+                    <input class="form-control" type="number" id="cvv" name="cvv" placeholder="CVV" />
+                </div>
+                <div class="form-group text-danger" id="cvvError"></div> <!-- Placeholder for error messages -->
+            </div>
+
+            <div id="totalAmount" class="form-group total-amount">
+            </div>
+
+            <button class="btn btn-primary btn-block" type="button" onclick="confirmPayment()">Pay Now</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function confirmPayment() {
+        Swal.fire({
+            title: "Are you sure you want to proceed with the payment?",
+            text: "Once confirmed, the payment will be processed.",
+            icon: "warning",
+            showDenyButton: true,
+            confirmButtonText: "Confirm",
+            denyButtonText: "Cancel",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Payment Successful!",
+                    text: "Your payment has been processed successfully.",
+                    icon: "success"
+                }).then(() => {
+                    document.getElementById("paymentForm").submit();
+                });
+            } else if (result.isDenied) {
+                Swal.close();
+            }
+        });
+    }
+
+    function totalPriceGet() {
+        let totalAmount = document.getElementById("totalAmount");
+        totalAmount.innerHTML = `<p>Total Amount: $${localStorage.totalPrice}</p>`
+    }
+    window.onload = totalPriceGet();
+</script>

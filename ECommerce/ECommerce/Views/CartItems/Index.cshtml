@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-    var totalCartPrice = 0.0m; 
+    var totalCartPrice = 0.0m;
 }
 
 <!-- cart + summary -->
@@ -17,8 +17,8 @@
                         <h4 class="card-title mb-4">Your shopping cart</h4>
                         @foreach (var item in Model)
                         {
-                            var itemTotalPrice = item.Quantity * item.Product.Price; 
-                            totalCartPrice += (decimal)itemTotalPrice; 
+                            var itemTotalPrice = item.Quantity * item.Product.Price;
+                            totalCartPrice += (decimal)itemTotalPrice;
                             <div class="row gy-3 mb-4">
                                 <div class="col-lg-5">
                                     <div class="me-lg-5">
@@ -50,7 +50,7 @@
                                             <input type="hidden" name="CartItemId" value="@item.CartItemId" />
                                             <button type="submit" class="btn btn-light border text-danger icon-hover-danger" onclick="removeItem(@item.CartItemId)">Remove</button>
                                             <!-- Modify this in your view -->
-                            
+
 
                                         </form>
                                     </div>
@@ -111,6 +111,14 @@
         });
     });
 
+    document.querySelector('.btn-primary').addEventListener('click', function () {
+        // Get the total price from the element
+        var totalPrice = document.getElementById('cart-final-total').innerText.replace(' JOD', '');
+
+        // Save the total price to local storage
+        localStorage.setItem('totalPrice', totalPrice);
+    });
+
     function removeItem(cartItemId) {
         if (confirm('Are you sure you want to remove this item from your cart?')) {
             $.ajax({
@@ -126,5 +134,6 @@
             });
         }
     }
-
 </script>
+
+

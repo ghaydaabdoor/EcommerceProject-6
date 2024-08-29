@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|c:\\users\\orange\\desktop\\6thproj github\\ecommerceproject-6\\ecommerce\\ecommerce\\views\\cartitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|c:\\users\\orange\\desktop\\6thproj github\\ecommerceproject-6\\ecommerce\\ecommerce\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|c:\\users\\orange\\desktop\\6thproj github\\ecommerceproject-6\\ecommerce\\ecommerce\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|c:\\users\\orange\\desktop\\6thproj github\\ecommerceproject-6\\ecommerce\\ecommerce\\views\\payment\\payment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\views\\payment\\payment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ecommerce\\views\\cartitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\views\\cartitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|c:\\users\\orange\\desktop\\6thproj github\\ecommerceproject-6\\ecommerce\\ecommerce\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ecommerce\\controllers\\cartitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\controllers\\cartitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ecommerce\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{08819730-3A34-437E-8665-F0E89587CB72}|ECommerce\\ECommerce.csproj|solutionrelative:ecommerce\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\CartItems\\Index.cshtml",
-              "RelativeDocumentMoniker": "ECommerce\\Views\\CartItems\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\CartItems\\Index.cshtml",
-              "RelativeToolTip": "ECommerce\\Views\\CartItems\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAXAAAA",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Users\\Create.cshtml",
+              "RelativeDocumentMoniker": "ECommerce\\Views\\Users\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Users\\Create.cshtml",
+              "RelativeToolTip": "ECommerce\\Views\\Users\\Create.cshtml",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAEwAAABqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-18T13:54:21.59Z",
+              "WhenOpened": "2024-08-28T20:48:06.819Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Categories\\Index.cshtml",
-              "RelativeDocumentMoniker": "ECommerce\\Views\\Categories\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Categories\\Index.cshtml",
-              "RelativeToolTip": "ECommerce\\Views\\Categories\\Index.cshtml",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAAEoAAABkAAAA",
+              "DocumentIndex": 0,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "ECommerce\\Views\\Users\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "ECommerce\\Views\\Users\\Login.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAC8AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-18T13:51:37.563Z",
+              "WhenOpened": "2024-08-28T20:45:24.977Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CartItemsController.cs",
-              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Controllers\\CartItemsController.cs",
-              "RelativeDocumentMoniker": "ECommerce\\Controllers\\CartItemsController.cs",
-              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Controllers\\CartItemsController.cs",
-              "RelativeToolTip": "ECommerce\\Controllers\\CartItemsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T13:16:22.292Z",
+              "Title": "Payment.cshtml",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Payment\\Payment.cshtml",
+              "RelativeDocumentMoniker": "ECommerce\\Views\\Payment\\Payment.cshtml",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\Payment\\Payment.cshtml",
+              "RelativeToolTip": "ECommerce\\Views\\Payment\\Payment.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAC0AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-28T18:31:58.494Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "ECommerce\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "ECommerce\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T13:15:31.96Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\CartItems\\Index.cshtml",
+              "RelativeDocumentMoniker": "ECommerce\\Views\\CartItems\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\6thProj github\\EcommerceProject-6\\ECommerce\\ECommerce\\Views\\CartItems\\Index.cshtml",
+              "RelativeToolTip": "ECommerce\\Views\\CartItems\\Index.cshtml",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAgwFoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T13:54:21.59Z",
               "EditorCaption": ""
             }
           ]
